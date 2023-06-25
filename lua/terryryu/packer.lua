@@ -50,4 +50,6 @@ return require('packer').startup(function(use)
 	}
 }
 
+use {'ojroques/nvim-osc52'}
+
 end)
