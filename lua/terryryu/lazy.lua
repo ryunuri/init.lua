@@ -21,7 +21,12 @@ local plugins = {
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
-    { 'rose-pine/neovim', name = 'rose-pine' },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
 
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     'nvim-treesitter/playground',
@@ -56,28 +61,17 @@ local plugins = {
     },
 
     'ojroques/nvim-osc52',
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
-    },
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
-    },
+    { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true } },
     'azabiong/vim-highlighter',
-    { 'ggandor/leap.nvim', dependencies = { 'tpope/vim-repeat' }},
     'simrat39/symbols-outline.nvim' ,
     { 'folke/todo-comments.nvim', dependencies = { "nvim-lua/plenary.nvim" }},
-    {'nvim-telescope/telescope-file-browser.nvim', dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
+    { 'nvim-tree/nvim-tree.lua',
+        version = "*",
+        lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+    },
 }
 
 require("lazy").setup(plugins, {})
