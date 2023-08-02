@@ -15,25 +15,38 @@ vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappin
 
 local plugins = {
 
-    {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
-        -- or                              , branch = '0.1.x',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-
+    -- Theme
     {
         "folke/tokyonight.nvim",
         lazy = false,
         priority = 1000,
         opts = {},
     },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+            'linrongbin16/lsp-progress.nvim',
+            lazy = true }
+        },
+    {
+        'linrongbin16/lsp-progress.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require('lsp-progress').setup()
+        end
+    },
 
+    -- Telescope
+    {
+        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        -- or                              , branch = '0.1.x',
+        dependencies = { 'nvim-lua/plenary.nvim' }
+    },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     'nvim-treesitter/playground',
-    'ThePrimeagen/harpoon',
-    'mbbill/undotree',
-    'tpope/vim-fugitive',
 
+    -- LSP
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -60,11 +73,13 @@ local plugins = {
         }
     },
 
-    'ojroques/nvim-osc52',
-    { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true } },
-    'azabiong/vim-highlighter',
-    'simrat39/symbols-outline.nvim' ,
-    { 'folke/todo-comments.nvim', dependencies = { "nvim-lua/plenary.nvim" }},
+    -- Git
+    'tpope/vim-fugitive',
+
+    -- Helpers
+    { 'ThePrimeagen/harpoon', lazy = false},
+    'mbbill/undotree',
+    'simrat39/symbols-outline.nvim',
     { 'nvim-tree/nvim-tree.lua',
         version = "*",
         lazy = false,
@@ -72,6 +87,16 @@ local plugins = {
             "nvim-tree/nvim-web-devicons",
         },
     },
+    { 'folke/trouble.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+    },
+
+    -- Etc.
+    'ojroques/nvim-osc52',
+    'azabiong/vim-highlighter',
+    { 'folke/todo-comments.nvim', dependencies = { "nvim-lua/plenary.nvim" }},
+
+    { "aserowy/tmux.nvim" },
 }
 
 require("lazy").setup(plugins, {})
