@@ -95,8 +95,8 @@ local plugins = {
     'ojroques/nvim-osc52',
     'azabiong/vim-highlighter',
     { 'folke/todo-comments.nvim', dependencies = { "nvim-lua/plenary.nvim" }},
-
     { "aserowy/tmux.nvim" },
+    { "lervag/vimtex", lazy = false },
 }
 
 require("lazy").setup(plugins, {})
