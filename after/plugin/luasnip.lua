@@ -1,13 +1,22 @@
-require("luasnip").config.set_config({ -- Setting LuaSnip config
+local ls = require("luasnip")
+local types = require("luasnip.util.types")
+ls.config.set_config({
+	history = true, --keep around last snippet local to jump back
+	updateevents = "TextChanged,TextChangedI", --update changes as you type
+	enable_autosnippets = true,
+	ext_opts = {
+		[types.choiceNode] = {
+			active = {
+				virt_text = { { "●", "GruvboxOrange" } },
+			},
+		},
+	},
 
-  -- Enable autotriggered snippets
-  enable_autosnippets = true,
-
-  -- Use Tab (or some other key if you prefer) to trigger visual selection
-  store_selection_keys = "<Tab>",
+   -- Use Tab (or some other key if you prefer) to trigger visual selection
+   store_selection_keys = "<Tab>",
 })
 
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippet/"})
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/lua/LuaSnip/"})
 
 -- Yes, we're just executing a bunch of Vimscript, but this is the officially
 -- endorsed method; see https://github.com/L3MON4D3/LuaSnip#keymaps
@@ -20,3 +29,4 @@ smap <silent><expr> <Tab> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Ta
 imap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 ]]
+
