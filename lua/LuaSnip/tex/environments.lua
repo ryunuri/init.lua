@@ -190,4 +190,49 @@ return
       ),
       { condition = line_begin }
     ),
+
+    s({trig="defn", snippetType="autosnippet"},
+      fmta(
+        [[
+        \begin{definition}[<>]
+            <>
+        \end{definition}
+      ]],
+        {
+          i(1),
+          d(2, get_visual),
+        }
+      ),
+      {condition = line_begin}
+    ),
+
+    s({trig="exp",},
+      fmta(
+        [[
+        \begin{example}[<>]
+            <>
+        \end{example}
+      ]],
+        {
+          i(1),
+          d(2, get_visual),
+        }
+      ),
+      {condition = line_begin}
+    ),
+
+    s({trig="rmk",},
+      fmta(
+        [[
+        \begin{remark}[<>]
+            <>
+        \end{remark}
+      ]],
+        {
+          i(1),
+          d(2, get_visual),
+        }
+      ),
+      {condition = line_begin}
+    ),
   }

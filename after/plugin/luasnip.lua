@@ -16,7 +16,8 @@ ls.config.set_config({
    store_selection_keys = "<Tab>",
 })
 
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/lua/LuaSnip/"})
+local luasnip_path = vim.fn.expand("~/.config/nvim/lua/LuaSnip")
+require("luasnip.loaders.from_lua").load({paths = luasnip_path})
 
 -- Yes, we're just executing a bunch of Vimscript, but this is the officially
 -- endorsed method; see https://github.com/L3MON4D3/LuaSnip#keymaps
@@ -30,3 +31,7 @@ imap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '
 smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 ]]
 
+-- Reload on demand
+vim.keymap.set("n", "<Leader>L", function()
+  require("luasnip.loaders.from_lua").load({ paths = luasnip_path })
+end)
