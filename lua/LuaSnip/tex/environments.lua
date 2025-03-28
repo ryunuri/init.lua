@@ -194,13 +194,15 @@ return
     s({trig="defn", snippetType="autosnippet"},
       fmta(
         [[
-        \begin{definition}[<>]
+        \begin{definition}[<>][<>][<>]
             <>
         \end{definition}
       ]],
         {
           i(1),
-          d(2, get_visual),
+          i(2),
+          i(3),
+          d(4, get_visual),
         }
       ),
       {condition = line_begin}
@@ -209,13 +211,15 @@ return
     s({trig="exp",},
       fmta(
         [[
-        \begin{example}[<>]
+        \begin{example}[<>][<>][<>]
             <>
         \end{example}
       ]],
         {
           i(1),
-          d(2, get_visual),
+          i(2),
+          i(3),
+          d(4, get_visual),
         }
       ),
       {condition = line_begin}
@@ -224,13 +228,34 @@ return
     s({trig="rmk",},
       fmta(
         [[
-        \begin{remark}[<>]
+        \begin{remark}[<>][<>][<>]
             <>
         \end{remark}
       ]],
         {
           i(1),
-          d(2, get_visual),
+          i(2),
+          i(3),
+          d(4, get_visual),
+        }
+      ),
+      {condition = line_begin}
+    ),
+
+    s({trig="box",},
+      fmta(
+        [[
+        \begin{<>}[<>][<>][<>]
+            <>
+        \end{<>}
+      ]],
+        {
+          i(1),
+          i(2),
+          i(3),
+          i(4),
+          d(5, get_visual),
+          rep(1),
         }
       ),
       {condition = line_begin}

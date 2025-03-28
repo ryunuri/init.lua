@@ -373,7 +373,7 @@ return
   -- INTEGRAL from positive to negative infinity
   s({trig = "([^%a])intf", wordTrig = false, regTrig = true, snippetType="autosnippet"},
     fmta(
-      "<>\\int_{\\infty}^{\\infty}",
+      "<>\\int_{-\\infty}^{\\infty}",
       {
         f( function(_, snip) return snip.captures[1] end ),
       }
@@ -391,6 +391,19 @@ return
     ),
     {condition = tex.in_mathzone}
   ),
+  -- DERIVATIVE with denominator only
+  s({trig = "([^%a])fx", wordTrig = false, regTrig = true, snippetType="autosnippet"},
+    fmta(
+      "<><>\\left(<>\\right)",
+      {
+        f( function(_, snip) return snip.captures[1] end ),
+        i(1, 'f'),
+        i(2, 'x'),
+      }
+    ),
+    {condition = tex.in_mathzone}
+  ),
+
   --
   -- BEGIN STATIC SNIPPETS
   --
