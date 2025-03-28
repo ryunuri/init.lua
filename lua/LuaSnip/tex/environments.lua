@@ -235,4 +235,16 @@ return
       ),
       {condition = line_begin}
     ),
+
+    -- Math context text
+    s({trig = "([^%l])tt", regTrig = true, wordTrig = false, snippetType="autosnippet"},
+      fmta(
+        "<>\\text{<>} <>",
+        {
+          f( function(_, snip) return snip.captures[1] end ),
+          d(1, get_visual),
+          i(0),
+        }
+      )
+    ),
   }
