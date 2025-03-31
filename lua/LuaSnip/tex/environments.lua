@@ -82,9 +82,9 @@ return
     s({trig="nn", snippetType="autosnippet"},
       fmta(
         [[
-        \begin{equation*}
+        \begin{equation}
             <>
-        \end{equation*}
+        \end{equation}
       ]],
         {
           i(1),
@@ -118,6 +118,24 @@ return
       ]],
         {
           i(1),
+        }
+      ),
+      {condition = line_begin}
+    ),
+    -- CASES EQUATION
+    s({trig="cs", snippetType="autosnippet"},
+      fmta(
+        [[
+        \begin{equation*}
+            <> =
+            \begin{cases}
+                <>
+            \end{cases}
+        \end{equation*}
+      ]],
+        {
+          i(1),
+          d(2, get_visual),
         }
       ),
       {condition = line_begin}
@@ -167,7 +185,7 @@ return
     s({trig = "^mm", regTrig = true, wordTrig = false, snippetType="autosnippet"},
       fmta(
         "$<>$",
-{
+        {
           i(1),
         })),
     -- FIGURE
